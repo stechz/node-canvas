@@ -10,6 +10,11 @@ out.pdf
 .pomo
 node_modules
 
+# emscripten
+emscripten/*.o
+emscripten/ccanvas.js
+emscripten/demangler.js
+
 # Vim cruft
 *.swp
 *.un~

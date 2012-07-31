@@ -941,3 +941,21 @@ int
 Image::isPNG(uint8_t *data) {
   return 'P' == data[1] && 'N' == data[2] && 'G' == data[3];
 }
+
+void Image::setDataMode(data_mode_t mode) {
+  data_mode = mode;
+}
+
+void Image::setFilename(char* name) {
+  if (filename) free(filename);
+  name = strdup(name);
+}
+
+uint32_t Image::getWidth() {
+  return width;
+}
+
+uint32_t Image::getHeight() {
+  return height;
+}
+

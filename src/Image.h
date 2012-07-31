@@ -10,6 +10,11 @@
 
 #include "Canvas.h"
 
+extern "C" {
+  #include <string.h>
+  #include <stdlib.h>
+}
+
 #ifdef HAVE_JPEG
 #include <jpeglib.h>
 #include <jerror.h>
@@ -89,6 +94,10 @@ class Image: public node::ObjectWrap {
     } type;
 
     static type extension(const char *filename);
+    void setDataMode(data_mode_t mode);
+    void setFilename(char* name);
+    uint32_t getWidth();
+    uint32_t getHeight();
 
   private:
     cairo_surface_t *_surface;

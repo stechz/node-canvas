@@ -1113,6 +1113,22 @@ Context2d::SetFillPattern(const Arguments &args) {
   return Undefined();
 }
 
+void Context2d::setFillGradient(Gradient* g) {
+  state->fillGradient = g->pattern();
+}
+
+void Context2d::setFillPattern(Pattern* p) {
+  state->fillPattern = p->pattern();
+}
+
+void Context2d::setStrokeGradient(Gradient* g) {
+  state->strokeGradient = g->pattern();
+}
+
+void Context2d::setStrokePattern(Pattern* p) {
+  state->strokePattern = p->pattern();
+}
+
 /*
  * Set stroke pattern, used internally for strokeStyle=
  */
@@ -1985,3 +2001,22 @@ Context2d::ArcTo(const Arguments &args) {
 
   return Undefined();
 }
+
+
+void Context2d::setStrokeColor(const char* str) {
+  short ok;
+  uint32_t rgba = rgba_from_string(str, &ok);
+  if (!ok) return;
+  state->strokePattern = state->strokeGradient = NULL;
+  state->stroke = rgba_create(rgba);
+}
+
+void Context2d::setFillColor(const char* str) {
+  short ok;
+  uint32_t rgba = rgba_from_string(str, &ok);
+  if (!ok) return;
+  state->fillPattern = state->fillGradient = NULL;
+  state->fill = rgba_create(rgba);
+}
+
+

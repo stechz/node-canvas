@@ -68,6 +68,21 @@ Gradient::New(const Arguments &args) {
  * Add color stop.
  */
 
+void
+Gradient::addColorStop(double offset, const char* str) {
+  short ok;
+  uint32_t rgba = rgba_from_string(str, &ok);
+  if (!ok) return;
+  rgba_t color = rgba_create(rgba);
+  cairo_pattern_add_color_stop_rgba(
+      pattern()
+    , offset
+    , color.r
+    , color.g
+    , color.b
+    , color.a);
+}
+
 Handle<Value>
 Gradient::AddColorStop(const Arguments &args) {
   HandleScope scope;

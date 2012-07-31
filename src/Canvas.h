@@ -8,6 +8,10 @@
 #ifndef __NODE_CANVAS_H__
 #define __NODE_CANVAS_H__
 
+#ifdef EMSCRIPTEN
+typedef int pthread_rwlock_t;
+#endif
+
 #include <v8.h>
 #include <node.h>
 #include <node_object_wrap.h>

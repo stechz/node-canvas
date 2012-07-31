@@ -20,6 +20,8 @@ class Gradient: public node::ObjectWrap {
     Gradient(double x0, double y0, double r0, double x1, double y1, double r1);
     inline cairo_pattern_t *pattern(){ return _pattern; }
 
+    void addColorStop(double offset, const char* str);
+
   private:
     ~Gradient();
     double _x0, _y0, _x1, _y1, _r0, _r1;

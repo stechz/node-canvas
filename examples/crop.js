@@ -21,13 +21,9 @@ img.onload = function(){
 
   ctx.drawImage(img, 0, 0, w, h, 0, 0, w, h);
 
-  var out = fs.createWriteStream(__dirname + '/crop.jpg');
+  var out = fs.createWriteStream(__dirname + '/crop.png');
 
-  var stream = canvas.createJPEGStream({
-    bufsize : 2048,
-    quality : 80
-  });
-
+  var stream = canvas.createPNGStream();
   stream.pipe(out);
 };
 

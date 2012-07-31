@@ -134,6 +134,13 @@ class Context2d: public node::ObjectWrap {
     void save();
     void restore();
 
+    void setStrokeColor(const char* str);
+    void setFillColor(const char* str);
+    void setFillGradient(class Gradient* g);
+    void setFillPattern(class Pattern* p);
+    void setStrokeGradient(class Gradient* g);
+    void setStrokePattern(class Pattern* p);
+
   private:
     ~Context2d();
     Canvas *_canvas;
